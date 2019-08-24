@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
+import { fakeBackendProvider } from './_helpers';
 
 @NgModule({
     imports: [
@@ -17,6 +18,9 @@ import { RegisterComponent } from './register';
         HomeComponent,
         LoginComponent,
         RegisterComponent
+    ],
+    providers: [
+        fakeBackendProvider
     ],
     bootstrap: [AppComponent]
 })
