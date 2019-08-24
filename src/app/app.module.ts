@@ -7,11 +7,15 @@ import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
 import { fakeBackendProvider } from './_helpers';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
     imports: [
         BrowserModule,
-        appRoutingModule
+        appRoutingModule,
+        ReactiveFormsModule,
+        HttpClientModule
     ],
     declarations: [
         AppComponent,
