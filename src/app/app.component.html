@@ -1,9 +1,8 @@
 <!-- navbar  -->
-<nav class="navbar">
+<nav class="navbar" *ngIf="currentUser">
     <div>
         <a routerLink="/">Home</a>
-        <a routerLink="/login">Login</a>
-        <a routerLink="/register">Register</a>
+        <a (click)="logout()">LogOut</a>
     </div>
 </nav>
 
