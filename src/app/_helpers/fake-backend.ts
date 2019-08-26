@@ -1,12 +1,11 @@
-import { Injectable } from "@angular/core";
-import { HttpRequest, HttpResponse, HttpHandler, HttpInterceptor, HttpEvent, HTTP_INTERCEPTORS } from "@angular/common/http";
-import { of, throwError, Observable } from "rxjs";
-import { delay, mergeMap, materialize, dematerialize } from "rxjs/operators";
+import { Injectable } from '@angular/core';
+import { HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { Observable, of, throwError } from 'rxjs';
+import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
 
 let users = [{ id: 1, firstName: 'Jason', lastName: 'Watmore', username: 'test', password: 'test' }];
 
 @Injectable()
-
 export class FakeBackendInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const { url, method, headers, body } = request;
@@ -20,12 +19,12 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
         function handleRoute() {
             switch (true) {
-                case url.endsWith('/users/authenticate') && method === 'POST' :
-                    return authenticate;
-                default :
-                    // pass all requests not treated above
+                case url.endsWith('/users/authenticate') && method === 'POST':
+                    return authenticate();
+                default:
+                    // pass through any requests not handled above
                     return next.handle(request);
-            }
+            }    
         }
 
         // route functions
@@ -48,15 +47,16 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         function ok(body?) {
             return of(new HttpResponse({ status: 200, body }))
         }
+
         function error(message) {
-            return throwError({ error: {message} });
+            return throwError({ error: { message } });
         }
     }
 }
 
 export const fakeBackendProvider = {
-        // use fake backend in place of Http service for backend-less development
-        provide: HTTP_INTERCEPTORS,
-        useClass: FakeBackendInterceptor,
-        multi: true
-}
+    // use fake backend in place of Http service for backend-less development
+    provide: HTTP_INTERCEPTORS,
+    useClass: FakeBackendInterceptor,
+    multi: true
+};
