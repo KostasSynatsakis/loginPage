@@ -1,16 +1,23 @@
 <!-- navbar  -->
-<nav class="navbar" *ngIf="currentUser">
-    <div>
-        <a routerLink="/">Home</a>
-        <a (click)="logout()">LogOut</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" *ngIf="currentUser">
+    <a class="navbar-brand" routerLink="/">Application</a>>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" routerLink="/">Home</a>
+            <a class="nav-item nav-link" (click)="logout()">LogOut</a>
+        </div>
     </div>
 </nav>
 
 <!-- main page -->
-<div>
-    <div>
-        <div>
-            <div>
+<div id="main">
+    <div class="container">
+        <div class="card text-center">
+            <div class="card-body">
                 <alert></alert>
                 <router-outlet></router-outlet>
             </div>
