@@ -1,12 +1,17 @@
 #main {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
     background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=753&q=80');
     background-color: #abc;
+    background-size: cover; 
     background-position: center; 
     background-repeat: no-repeat; 
-    background-size: cover; 
 }
 
 .card {
-    margin: 0 auto;
-    width: 50%;
+    position: relative;
+    margin: 5em auto;
+    width: 40%;
+    border-radius: 15px;
 }
